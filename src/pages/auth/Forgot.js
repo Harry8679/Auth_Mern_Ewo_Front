@@ -10,7 +10,7 @@ const Forgot = () => {
 
   const handleInputChange = () => {};
 
-  const loginUser = () => {};
+  const forgotPassword = () => {};
   return (
     <div className={`container ${styles.auth}`}>
       <Card>
@@ -20,7 +20,7 @@ const Forgot = () => {
           </div>
           <h2>Forgot Password</h2>
 
-          <form onSubmit={loginUser}>
+          <form onSubmit={forgotPassword}>
             <input type='email' placeholder='Email' required name='email' value={email} onChange={handleInputChange} />
 
             <button className="--btn --btn-primary --btn-block" type="submit">Get Reset Email</button>
