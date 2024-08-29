@@ -4,6 +4,8 @@ import Card from "../../components/card/Card";
 import { Link } from "react-router-dom";
 import PasswordInput from "../../components/passwordInput/PasswordInput";
 import { FaUserPlus } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
+import { IoCheckmarkDone } from "react-icons/io5";
 
 
 const Register = () => {
@@ -17,7 +19,25 @@ const Register = () => {
 
   const { name, email, password, password2 } = formData;
 
-  const handleInputChange = () => {};
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const [uCase, setUCase] = useState(false);
+  const [num, setNum] = useState(false);
+  const [sChar, setSChar] = useState(false);
+  const [passLength, setPassLength] = useState(false);
+
+  const timesIcon = <ImCross size={15} color="red" />
+  const checkIcon = <IoCheckmarkDone size={15} color="green" />
+
+  const switchIcon = (condition) => {
+    if (condition) {
+        return checkIcon;
+    }
+    return timesIcon;
+  }
 
   const registerUser = () => {};
   return (
@@ -39,6 +59,32 @@ const Register = () => {
             <input type='email' placeholder='Email' required name='email' value={email} onChange={handleInputChange} />
             <PasswordInput placeholder='Password' name='password' value={password} onChange={handleInputChange} />
             <PasswordInput placeholder='Confirm Password' name='password2' value={password2} onChange={handleInputChange} />
+
+            {/* Password Strength */}
+            <Card cardClass={styles.group}>
+                <ul className="form-list">
+                    <li>
+                        <span className={styles.indicator}>
+                            {/* {uCase ? checkIcon : timesIcon} */} {switchIcon(uCase)} &nbsp; Lowercase & Uppercase
+                        </span>
+                    </li>
+                    <li>
+                        <span className={styles.indicator}>
+                            {switchIcon(num)} &nbsp; Number (0-9)
+                        </span>
+                    </li>
+                    <li>
+                        <span className={styles.indicator}>
+                            {switchIcon(sChar)} &nbsp; special Character(!@#$%^&*)
+                        </span>
+                    </li>
+                    <li>
+                        <span className={styles.indicator}>
+                            {switchIcon(passLength)} &nbsp; At least 6 Characters
+                        </span>
+                    </li>
+                </ul>
+            </Card>
 
             <button className="--btn --btn-primary --btn-block" type="submit">Register</button>
           </form>
