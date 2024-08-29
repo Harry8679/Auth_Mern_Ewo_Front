@@ -10,8 +10,8 @@ const PasswordInput = ({ placeholder, value, onChange, name, onPaste }) => {
     setShowPassword(!showPassword);
   }
   return (
-    <div className={showPassword ? 'text': 'password'}>
-        <input type='password' placeholder={placeholder} required name={name} value={value} onChange={onChange} onPaste={onPaste} />
+    <div className='password'>
+        <input type={showPassword ? 'text': 'password'} placeholder={placeholder} required name={name} value={value} onChange={onChange} onPaste={onPaste} />
         <div className="icon" onClick={togglePassword}>
             {showPassword ? (<IoEyeOff size={20} />) : (<IoEye size={20} />)}
         </div>
