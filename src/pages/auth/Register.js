@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./auth.module.scss";
 import Card from "../../components/card/Card";
 import { Link } from "react-router-dom";
 import PasswordInput from "../../components/passwordInput/PasswordInput";
 import { FaUserPlus } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-import { IoCheckmarkDone } from "react-icons/io5";
+import { IoIosCheckmarkCircle } from "react-icons/io";
+
 
 
 const Register = () => {
@@ -30,7 +31,7 @@ const Register = () => {
   const [passLength, setPassLength] = useState(false);
 
   const timesIcon = <ImCross size={15} color="red" />
-  const checkIcon = <IoCheckmarkDone size={15} color="green" />
+  const checkIcon = <IoIosCheckmarkCircle size={15} color="green" />
 
   const switchIcon = (condition) => {
     if (condition) {
@@ -38,6 +39,44 @@ const Register = () => {
     }
     return timesIcon;
   }
+
+    // // Check email
+    // match: [
+    //         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    //         "Please enter a valid emaial",
+    //     ],
+
+    useEffect(() => {
+        // Check lower and uppercase
+        if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+            setUCase(true);
+        } else {
+            setUCase(false);
+        }
+
+        // Check For Numbers
+        if (password.match(/([0-9])/)) {
+            setNum(true);
+        } else {
+            setNum(false);
+        }
+        
+        // Check For Special char
+        if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) {
+            setSChar(true);
+        } else {
+            setSChar(false);
+        }
+
+        // Check For Special char
+        if (password.length > 5) {
+            setPassLength(true);
+        } else {
+            setPassLength(false);
+        }
+
+        
+    }, [password]);
 
   const registerUser = () => {};
   return (
