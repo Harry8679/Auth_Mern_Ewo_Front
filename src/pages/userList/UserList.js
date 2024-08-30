@@ -4,6 +4,7 @@ import PageMenu from '../../components/pageMenu/PageMenu';
 import UserStats from '../../components/userStats/UserStats';
 import Search from '../../components/search/Search';
 import { FaTrashCan } from "react-icons/fa6";
+import ChangeRole from '../../components/changeRole/ChangeRole';
 
 const UserList = () => {
   return (
@@ -35,7 +36,7 @@ const UserList = () => {
                                 <td>Harry</td>
                                 <td>harry.maccode@lhlp.com</td>
                                 <td>Admin</td>
-                                <td>ChangeRole</td>
+                                <td><ChangeRole /></td>
                                 <td><span><FaTrashCan size={20} color='red' /></span></td>
                             </tr>
                         </tbody>
