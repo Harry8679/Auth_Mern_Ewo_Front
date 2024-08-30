@@ -10,11 +10,13 @@ import Verify from './pages/auth/Verify';
 import Profile from './pages/profile/Profile';
 import ChangePassword from './pages/changePassword/ChangePassword';
 import UserList from './pages/userList/UserList';
+// import Loader from './components/loader/Loader';
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
+        {/* <Loader /> */}
         <Routes>
           <Route path='/' element={<Layout><Home /></Layout>} />
           <Route path='/login' element={<Login />} />
